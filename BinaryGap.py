@@ -19,12 +19,11 @@ N is an integer within the range [1..2,147,483,647].
 def solution2(N):
     '''
     Solution that uses regex
-    Fails a lot
     '''
     import re
     binary_str = bin(N)[2:] 
     pattern = r"1(0+)1" 
-    matches = re.findall(pattern, binary_str)
+    matches = re.findall(pattern, binary_str, overlapped=True)
     print(matches)
     if matches:
         maximum = max(matches, key=len)
@@ -50,5 +49,5 @@ def solution(N):
 
 
 if __name__ == "__main__":
-    N = input()
+    N = int(input().strip())
     print(solution(N))
